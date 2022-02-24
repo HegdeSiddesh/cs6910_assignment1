@@ -8,12 +8,20 @@ The objective of this assignment is to implement a feedforward neural network ar
 ### Creating object for optimizer to be used:
 
 The following choices of optimizers are available:
-- SGD
+- SGD 
 - Mometum
 - NAG
 - RMSPROP
 - Adam
 - NAdam
+
+The default values of the parameters for the optimizers are:
+1. SGD(learning_rate = 0.001, weight_decay = 0.0)
+2. Momentum(learning_rate = 0.001, gamma = 0.001, weight_decay = 0.0)
+3. NAG(learning_rate = 0.001, gamma = 0.9)
+4. RMSPROP(learning_rate = 0.001, gamma = 0.001, epsilon = 1e-8, weight_decay = 0.0)
+5. Adam(learning_rate = 0.001, epsilon = 1e-8, weight_decay = 0.0, beta1 = 0.9, beta2 = 0.999)
+6. NAdam(learning_rate = 0.001, epsilon = 1e-8, weight_decay = 0.0, beta1 = 0.9, beta2 = 0.999)
 
 Select the optimizer of choice and create an object for the same. The parameters for the selected optimizer can be set using the "updateParameters(dictionary)" function of the optimizer classes, where the input is a dictionary containing key value pairs correcponding to the parameters to be set. Each optimizer class consists the function which can compute gradient descent using the optimizer.
 
@@ -65,13 +73,13 @@ ffnn_model = FeedForwardNeuralNetwork(layers, optimizer, loss, activation, outpu
 
 ### Fitting data using object of FeedForwardNeuralNetwork class:
 
-Once the object for the FeedForwardNeuralNetwork class is created, the "fit" function needs to be called which will fit the required data using the model. The data needed to be passed to the fit function is (x_train, y_train, x_val, y_val) which is the training data and training label and validation data and validation labels.
+Once the object for the FeedForwardNeuralNetwork class is created, the "fit" function needs to be called which will fit the required data using the model. The data needed to be passed to the fit function is (x_train, y_train, x_val, y_val) which is the training data and training label and validation data and validation labels. The labels for Fashion-MNIST are the OneHotEncoded label values for each datapoint.
 
 After the model runs for the mentioned number of epochs, the "fit" function returns 4 parameters which are (training loss, training accuracy, validation loss, validation accuracy).
 
 An example for the above is as follows:
 ```python
-model.fit(x_train, y_train, x_val, y_val)
+ffnn_model.fit(x_train, y_train, x_val, y_val)
 ```
 
 ### Making new predictions:
@@ -80,7 +88,7 @@ When we have data points which need to classified, we can use the "predict" func
 
 An example for the above is as follows:
 ```python
-y_test_predictions = model.predict(x_test)
+y_test_predictions = ffnn_model.predict(x_test)
 ```
 
 ### Creating new Optimizers
@@ -96,7 +104,7 @@ The process for creating new optimizers is to create a class for the new optimiz
 
 
 ```python
-class Adam():
+class OptimizerName():
   def __init__(self, learning_rate = 0.001, weight_decay = 0.0, parameter_1 = None, parameter_2 = None):
     self.learning_rate = learning_rate
     self.weight_decay = weight_decay
