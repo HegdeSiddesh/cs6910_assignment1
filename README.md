@@ -57,6 +57,11 @@ Below are the optional parameters which can be passed:
 14. List for saving validation loss per epoch (default None)
 15. List for saving validation accuracy per epoch (default None)
 
+An example for the above is as follows:
+```python
+ffnn_model = FeedForwardNeuralNetwork(layers, optimizer, loss, activation, output_activation, epoch_count, batch_size, initialization = "Xavier-Normal", train_losses_list = train_losses, train_accuracy_list = train_accuracy, val_losses_list = val_losses, val_accuracy_list = val_accuracy)
+```
+
 
 ### Fitting data using object of FeedForwardNeuralNetwork class:
 
@@ -64,10 +69,19 @@ Once the object for the FeedForwardNeuralNetwork class is created, the "fit" fun
 
 After the model runs for the mentioned number of epochs, the "fit" function returns 4 parameters which are (training loss, training accuracy, validation loss, validation accuracy).
 
+An example for the above is as follows:
+```python
+model.fit(x_train, y_train, x_val, y_val)
+```
 
 ### Making new predictions:
 
 When we have data points which need to classified, we can use the "predict" function of the FeedForwardNeuralNetwork object which has been trained on the train data. The input to the "predict" function will be a list of datapoints, and the returned value will be predicted probabilities for each datapoint given by the trained model.
+
+An example for the above is as follows:
+```python
+y_test_predictions = model.predict(x_test)
+```
 
 ### Creating new Optimizers
 
@@ -81,6 +95,38 @@ The process for creating new optimizers is to create a class for the new optimiz
 7. update_parameters(weights, biases, dw, db, layer_count): This function performs the gradient descent step using the weights and biases and their computed derivatives. Also the number of layers present in the network has to be passed.
 
 
+```python
+class Adam():
+  def __init__(self, learning_rate = 0.001, weight_decay = 0.0, parameter_1 = None, parameter_2 = None):
+    self.learning_rate = learning_rate
+    self.weight_decay = weight_decay
+    self.parameter_1 = parameter_1
+    self.parameter_2 = parameter_2
 
+  def initialize(self, all_layers):
+    #Initialize the required parameters here
+
+  def set_learning_rate(self, learning_rate):
+    #Set learning rate here if necessary 
+    self.learning_rate = learning_rate
+  
+  def set_weight_decay(self, weight_decay):
+    #Set weight decay here if necessary 
+    self.weight_decay = weight_decay
+  
+  def optimizer_name(self):
+    return "name"
+
+  def set_initial_parameters(self, parameters):
+      self.parameter_1 = parameters["parameter_1"]
+      self.parameter_2 = parameters["parameter_2"]
+
+  def update_parameters(self, weights, biases, dw, db, layers):
+
+    for i in range(len(layers)+1):  
+      #Enter gradient descent logic here
+      
+    return weights, biases
+```
 
 
