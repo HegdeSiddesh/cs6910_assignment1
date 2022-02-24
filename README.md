@@ -65,4 +65,22 @@ Once the object for the FeedForwardNeuralNetwork class is created, the "fit" fun
 After the model runs for the mentioned number of epochs, the "fit" function returns 4 parameters which are (training loss, training accuracy, validation loss, validation accuracy).
 
 
+### Making new predictions:
+
+When we have data points which need to classified, we can use the "predict" function of the FeedForwardNeuralNetwork object which has been trained on the train data. The input to the "predict" function will be a list of datapoints, and the returned value will be predicted probabilities for each datapoint given by the trained model.
+
+### Creating new Optimizers
+
+The process for creating new optimizers is to create a class for the new optimizer which would have the following functions in it:
+1. __init__(input_parameters) : This function takes the input parameters passed by the user and assigns them to variables associated to the object for the class. Set default parameters here (if any) for the optimizer.
+2. initialize() : This function is to initialize any weights, biases or intermediate parameters which would be required for repeated use in every epoch. Example: Momentum optimizer required update_history_w which is the update history for the weights of the network. Such variables can be initialized before the run of the network.
+3. optimizer_name(): Returns a string with the name of the optimizer
+4. set_weight_decay(weight_decay) : Sets the weight decay(if any) for the optimizer
+5. set_learning_rate(learning_rate) : Sets the learning rate(if any) for the optimizer
+6. set_initial_parameters(dictionary) : Input is a dictionary with the key value pairs of the parameters to be initialized
+7. update_parameters(weights, biases, dw, db, layer_count): This function performs the gradient descent step using the weights and biases and their computed derivatives. Also the number of layers present in the network has to be passed.
+
+
+
+
 
