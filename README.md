@@ -91,6 +91,17 @@ An example for the above is as follows:
 y_test_predictions = ffnn_model.predict(x_test)
 ```
 
+### Testing prediction accuracy:
+
+Using the "accuracy" function, the accuracy of the model can be evaluated. The parameters required for the "accuracy" function are the true and predicted labels.
+
+An example for the above is as follows:
+```python
+#Here y_test_labels and y_test_predictions are the true and predicted labels
+#If labels are in OneHotEncoded form or predicted probabilities, use numpy.argmax(y) to get the class true/predicted labels first
+test_accuracy = accuracy(y_test_labels, y_test_predictions)
+```
+
 ### Creating new Optimizers
 
 The process for creating new optimizers is to create a class for the new optimizer which would have the following functions in it:
