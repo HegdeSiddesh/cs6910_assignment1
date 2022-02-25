@@ -37,7 +37,7 @@ Select the activation function of choice and create an object for the same. Each
 
 ### Creating object for loss function to be used:
 
-The following choices of optimizers are available:
+The following choices of loss functions are available:
 - Cross entropy loss
 - Squared loss
 
