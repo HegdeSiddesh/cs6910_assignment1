@@ -46,7 +46,7 @@ Select the loss function of choice and create an object for the same. Each class
 
 ### Creating an object for FeedForwardNeuralNetwork class:
 
-The class FeedForwardNeuralNetwork consists of the logic for the forward and backpropogation algorithm. An object of this class must be created, which would require the following parameters as input:
+The class FeedForwardNeuralNetwork has the logic for the forward and backpropogation algorithm. An object of this class must be created, which would require the following parameters as input:
 1. List with the hidden layer sizes (list size indicates the number of hidden layers for the network)
 2. Object for the optimizer to be used.
 3. Object for the loss function to be used.
