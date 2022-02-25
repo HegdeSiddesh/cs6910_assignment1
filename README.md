@@ -27,7 +27,7 @@ Select the optimizer of choice and create an object for the same. The parameters
 
 ### Creating object for activation function to be used:
 
-The following choices of optimizers are available:
+The following choices of activation functions are available:
 - Sigmoid
 - Tanh
 - Relu
